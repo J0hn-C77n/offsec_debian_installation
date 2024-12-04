@@ -1,4 +1,28 @@
 #!/bin/bash
+
+# function zone
+function initial_update_and_upgrade {                                                       
+sudo apt update -y; sudo apt full-upgrade -y \                                               
+# installing basic packages for comfortable work if they're missing in default Debian         
+sudo apt install wget curl git vim btop neofetch tmux powertopi net-tools flatpak exiftool -y
+}                                                                                             
+
+
+function helper_tools {                                                                       
+# additional tools for understanding linux and not remembering all the stuff                  
+flatpak install io.github.ronniedroid.concessio \ # this is for priveledges                   
+me.iepure.devtoolbox \ # this is for development stuff                                        
+com.felipekinoshita.Wildcard -y \ # this is for regexp                                        
+}                                                                                             
+
+
+#GNOME SPACE IS HERE
+function gnome_packages {
+flatpak install org.gnome.Extensions -y
+
+}
+# end of fucntion zone
+
 echo "Before we begin, you should know that this script is mainly developed for GNOME and includes flatpaks"
 echo "If you're okay with it - we may continue. Otherwise assume to rewrite it or set your system manualy"
 echo ""
@@ -15,67 +39,22 @@ default_installation=$(echo "default_installation" | tr '[:uppper:]' '[:lower:]'
 if [[ -z "$default_installation" || "$default_installation" == "y" || "$default_installation" == "yes" ]]; then
 	echo "Starting default installation" 
 	echo ""
-
-	# all fucntion without gui
+	
+	initial_update_and_upgrade
+	
+	# all fucntions without gui
 	
 elif [[ "$default_installation" == "n" || "$default_installation" == "no" ]]; then
 	echo "Please specify what you would like to install"
 
 	# need more scripting here!!!!!
-	#
+	
 else
 	echo "would you like to use default installation?"
 	echo "Y/n"
 fi
 
 
-
-
-
-
-
-
-initial_update_and_upgrade()
-
-function initial_update_and_upgrade {                                                       
-sudo apt update -y; sudo apt full-upgrade -y \                                               
-# installing basic packages for comfortable work if they're missing in default Debian         
-sudo apt install wget curl git vim btop neofetch tmux powertopi net-tools flatpak exiftool -y
-}                                                                                             
-                                                                                              
-function helper_tools {                                                                       
-# additional tools for understanding linux and not remembering all the stuff                  
-flatpak install io.github.ronniedroid.concessio \ # this is for priveledges                   
-me.iepure.devtoolbox \ # this is for development stuff                                        
-com.felipekinoshita.Wildcard -y \ # this is for regexp                                        
-}                                                                                             
-                                                                                              
-
-
-
-
-function initial_update_and_upgrade() {
-sudo apt update -y; sudo apt full-upgrade -y; \
-# installing basic packages for comfortable work if they're missing in default Debian 
-sudo apt install wget curl git vim btop neofetch tmux powertopi net-tools flatpak  -y; \
-}
-
-function helper_tools {
-# additional tools for understanding linux and not remembering all the stuff
-flatpak install io.github.ronniedroid.concessio \ # this is for priveledges
-me.iepure.devtoolbox \ # this is for development stuff 
-com.felipekinoshita.Wildcard -y \ # this is for regexp 
-}
-
-
-
-
-# 
-#
-#
-# # GNOME SPACE IS HERE
-# flatpak install org.gnome.Extensions; \
-#
 
 
 
