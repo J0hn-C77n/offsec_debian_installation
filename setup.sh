@@ -1,10 +1,39 @@
 #!/bin/bash
 
+###############################################################################################################
+###############################################################################################################
+# variable zone
+source_list_content=$'# next-stable
+deb http://deb.debian.org/debian next-stable main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian next-stable main contrib non-free non-free-firmware
+
+deb http://security.debian.org/debian next-stable main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian next-stable main contrib non-free non-free-firmware
+
+
+# unstable
+deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+
+deb http://security.debian.org/debian unstable main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian unstable main contrib non-free non-free-firmware'
+
+###############################################################################################################
 # function zone
 function initial_update_and_upgrade {                                                       
-sudo apt update -y; sudo apt full-upgrade -y \                                               
+if [ -z "$source_list_content" ]; then
+    echo "Error: source_list_content is not defined." >&2
+    return 1
+fi
+echo -e "$source_list_content" | sudo tee /etc/apt/sources.list
+
+# updating to next-stable and unstable versions
+sudo apt update && sudo apt full-upgrade -y                                                
+
 # installing basic packages for comfortable work if they're missing in default Debian         
-sudo apt install wget curl git vim btop neofetch tmux powertopi net-tools flatpak exiftool -y
+sudo apt install -y wget curl git vim btop neofetch tmux powertop \ 
+					net-tools flatpak exiftool wireguard openvpn \
+					
 }                                                                                             
 
 
@@ -16,21 +45,25 @@ com.felipekinoshita.Wildcard -y \ # this is for regexp
 }                                                                                             
 
 
+fucntion unstable_sources {
+
+}
+
 #GNOME SPACE IS HERE
 function gnome_packages {
 flatpak install org.gnome.Extensions -y
 
 }
 # end of fucntion zone
+###############################################################################################################
+###############################################################################################################
+
 
 echo "Before we begin, you should know that this script is mainly developed for GNOME and includes flatpaks"
 echo "If you're okay with it - we may continue. Otherwise assume to rewrite it or set your system manualy"
 echo ""
 echo "would you like to use default installation?"
 echo "Y/n"
-
-
-
 read default_installation
 
 
@@ -39,6 +72,7 @@ default_installation=$(echo "default_installation" | tr '[:uppper:]' '[:lower:]'
 if [[ -z "$default_installation" || "$default_installation" == "y" || "$default_installation" == "yes" ]]; then
 	echo "Starting default installation" 
 	echo ""
+	
 	
 	initial_update_and_upgrade
 	
