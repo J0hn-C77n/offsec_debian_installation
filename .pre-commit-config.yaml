@@ -1,0 +1,5 @@
+repos:
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.10.0-2
+    hooks:
+      - id: shfmt-docker # Docker image (requires Docker to run)
