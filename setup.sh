@@ -18,6 +18,15 @@ deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-fir
 deb http://security.debian.org/debian unstable main contrib non-free non-free-firmware
 deb-src http://security.debian.org/debian unstable main contrib non-free non-free-firmware'
 
+base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
+
+flatpak_helper=$'me.iepure.devtoolbox
+		com.felipekinoshita.Wildcard' 
+		#io.github.ronniedroid.concessio # this is for priveledges
+		#com.felipekionshita.Wildcard is for regexp
+		#me.iepure.devtoolbox is a powerfull app that can do priveledges, cron and all other stuff (maybe even regexp).
+
+		
 ###############################################################################################################
 # function zone
 function initial_update_and_upgrade {
@@ -31,16 +40,13 @@ function initial_update_and_upgrade {
 	sudo apt update && sudo apt full-upgrade -y
 
 	# installing basic packages for comfortable work if they're missing in default Debian
-	sudo apt install -y wget curl git vim btop neofetch tmux powertop \ 
-	net-tools flatpak exiftool wireguard openvpn
+	sudo apt install -y $base_packages
 
 }
 
 function helper_tools {
 	# additional tools for understanding linux and not remembering all the stuff
-	flatpak install io.github.ronniedroid.concessio \ # this is for priveledges
-	me.iepure.devtoolbox \ # this is for development stuff
-	com.felipekinoshita.Wildcard -y \ # this is for regexp
+	flatpak install 
 }
 
 # fucntion unstable_sources
