@@ -61,7 +61,7 @@ echo "would you like to use default installation?"
 echo "Y/n"
 read default_installation
 
-default_installation=$(echo "default_installation" | tr '[:uppper:]' '[:lower:]')
+default_installation=$(echo "default_installation" | tr '[:upper:]' '[:lower:]')
 
 if [[ -z $default_installation || $default_installation == "y" || $default_installation == "yes" ]]; then
 	echo "Starting default installation"
