@@ -14,9 +14,9 @@ deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware'
 
 
-base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
+base_packages='wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
 
-flatpak_helper=$'me.iepure.devtoolbox
+flatpak_helper='me.iepure.devtoolbox
 		com.felipekinoshita.Wildcard'
 #io.github.ronniedroid.concessio # this is for priveledges
 #com.felipekionshita.Wildcard is for regexp
