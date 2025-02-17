@@ -11,7 +11,7 @@ deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmw
 
 # sid
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware'
 
 
 base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
@@ -61,7 +61,7 @@ echo "would you like to use default installation?"
 echo "Y/n"
 read default_installation
 
-default_installation=$(echo "default_installation" | tr '[:upper:]' '[:lower:]')
+default_installation=$(echo "default_installation" | tr '[:uppper:]' '[:lower:]')
 
 if [[ -z $default_installation || $default_installation == "y" || $default_installation == "yes" ]]; then
 	echo "Starting default installation"
