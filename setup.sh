@@ -7,16 +7,12 @@ source_list_content=$'# trixie
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian trixie-security main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian trixie-security main contrib non-free non-free-firmware
 
 
 # sid
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian sid-security main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian sid-security main contrib non-free non-free-firmware'
 
 base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
 
