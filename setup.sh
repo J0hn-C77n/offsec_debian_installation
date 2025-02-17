@@ -3,20 +3,20 @@
 ###############################################################################################################
 ###############################################################################################################
 # variable zone
-source_list_content=$'# next-stable
-deb http://deb.debian.org/debian next-stable main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian next-stable main contrib non-free non-free-firmware
+source_list_content=$'# trixie
+deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian next-stable main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian next-stable main contrib non-free non-free-firmware
+deb http://security.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian trixie main contrib non-free non-free-firmware
 
 
-# unstable
-deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+# sid
+deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian unstable main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian unstable main contrib non-free non-free-firmware'
+deb http://security.debian.org/debian sid main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian sid main contrib non-free non-free-firmware'
 
 base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
 
@@ -26,7 +26,7 @@ flatpak_helper=$'me.iepure.devtoolbox
 		#com.felipekionshita.Wildcard is for regexp
 		#me.iepure.devtoolbox is a powerfull app that can do priveledges, cron and all other stuff (maybe even regexp).
 
-		
+code_helpers=$'pre-commit'	
 ###############################################################################################################
 # function zone
 function initial_update_and_upgrade {
@@ -36,7 +36,7 @@ function initial_update_and_upgrade {
 	fi
 	echo -e "$source_list_content" | sudo tee /etc/apt/sources.list
 
-	# updating to next-stable and unstable versions
+	# updating to trixie and sid versions
 	sudo apt update && sudo apt full-upgrade -y
 
 	# installing basic packages for comfortable work if they're missing in default Debian
@@ -49,7 +49,6 @@ function helper_tools {
 	flatpak install 
 }
 
-# fucntion unstable_sources
 
 #GNOME SPACE IS HERE
 function gnome_packages {
@@ -90,17 +89,17 @@ fi
 # To-do
 # add cycles and wariables for this code so you can split hacking, core, art and code into different subfolders
 # add some additional instruments in /opt/ directory
-# add "next-stable" source list because bookworm does not contain a lot of packages that you rely on
+# add "trixie" source list because bookworm does not contain a lot of packages that you rely on
 # add your .bashrc and .aliasrc(?) so you can use alias that you use dayli
 # add some office and gui stuff as well as some games (like Minecraft) and markdown readers
 
-# sudden idea to leave this pseudocode and declare these "gui" and "cli" into variable so you can change it and install all the thing you want rewriting pseudocode
+
 # pseudo-code zone:
 #
 # update system
 #
-# ask if next-stable wanted (also give oppurtunity to get sid)
-# change /etc/apt/source.list to next-stable (+ sid)
+# ask if trixie wanted (also give oppurtunity to get sid)
+# change /etc/apt/source.list to trixie (+ sid)
 #
 #	upgrade system after editing source list
 #
