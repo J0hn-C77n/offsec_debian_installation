@@ -1,5 +1,0 @@
-repos:
-  - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.10.0-2
-    hooks:
-      - id: debian:latest # Docker image (requires Docker to run)

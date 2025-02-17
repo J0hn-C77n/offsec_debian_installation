@@ -7,26 +7,26 @@ source_list_content=$'# trixie
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian trixie main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/debian trixie-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian trixie-security main contrib non-free non-free-firmware
 
 
 # sid
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 
-deb http://security.debian.org/debian sid main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian sid main contrib non-free non-free-firmware'
+deb http://security.debian.org/debian sid-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian sid-security main contrib non-free non-free-firmware'
 
 base_packages=$'wget curl git vim btop neofetch tmux powertop net-tools flatpak exiftool wireguard openvpn hyx' # this is the line where you can specify YOUR base packages that should be installed
 
 flatpak_helper=$'me.iepure.devtoolbox
-		com.felipekinoshita.Wildcard' 
-		#io.github.ronniedroid.concessio # this is for priveledges
-		#com.felipekionshita.Wildcard is for regexp
-		#me.iepure.devtoolbox is a powerfull app that can do priveledges, cron and all other stuff (maybe even regexp).
+		com.felipekinoshita.Wildcard'
+#io.github.ronniedroid.concessio # this is for priveledges
+#com.felipekionshita.Wildcard is for regexp
+#me.iepure.devtoolbox is a powerfull app that can do priveledges, cron and all other stuff (maybe even regexp).
 
-code_helpers=$'pre-commit'	
+code_helpers=$'pre-commit'
 ###############################################################################################################
 # function zone
 function initial_update_and_upgrade {
@@ -46,9 +46,8 @@ function initial_update_and_upgrade {
 
 function helper_tools {
 	# additional tools for understanding linux and not remembering all the stuff
-	flatpak install 
+	flatpak install
 }
-
 
 #GNOME SPACE IS HERE
 function gnome_packages {
@@ -92,7 +91,6 @@ fi
 # add "trixie" source list because bookworm does not contain a lot of packages that you rely on
 # add your .bashrc and .aliasrc(?) so you can use alias that you use dayli
 # add some office and gui stuff as well as some games (like Minecraft) and markdown readers
-
 
 # pseudo-code zone:
 #
